@@ -5,33 +5,16 @@ A fully native, high-performance and easy to use Google Place Autocomplete picke
 ## Demos
 
 | iOS | Android |
-| :---: | :---: |
+| :----: | :----: |
 | <img src="assets/images/iOSPlaceAutoCompletePicker.gif" width="240"/> | <img src="assets/images/androidPlaceAutoCompletePicker.gif" width="240"/> |
 
 ## ✨ Features
 
-- **🚀 Turbo Module Powered**: Built for the new React Native architecture, ensuring high performance and direct native integration.
 - **📍 New Google Places SDK**: Utilizes the latest and most powerful Google Places SDK for accurate and reliable place data.
 - **📱 Fully Native UI**: Presents a 100% native autocomplete interface on both iOS and Android for a smooth user experience.
-- **🎨 Theme Aware**: Automatically adapts to the device's light and dark modes out of the box.
 - **🔧 Customizable**: Control the presentation mode on Android (fullscreen or overlay).
+- **🚀 Turbo Module Powered**: Built for the new React Native architecture, ensuring high performance and direct native integration.
 - **📝 Rich Data**: Returns detailed place information, including formatted address, coordinates, and granular `addressComponents` (with long and short names).
-- **✅ Simple API**: An easy-to-use API with just two methods: `initialize` and `open`.
-- **🤖 Written in Kotlin & Objective-C**: Modern native code for better stability.
-
-## 🔑 Getting Your API Key
-
-This module uses the new Google Places SDK, which requires you to enable the **"Places API (New)"** in your Google Cloud project. You can use an existing API key, but you must ensure this new service is enabled for it.
-
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a new project or select an existing one.
-3. **Enable Billing** for your project.
-4. Navigate to **APIs & Services > Library**.
-5. Search for **"Places API (New)"** and select it from the results.
-    > **Important:** Do not select the legacy "Places API". This module will not work with it.
-6. Click the **Enable** button.
-7. Go to **APIs & Services > Credentials** to create a new API Key or select an existing one.
-8. **Secure your API key!** It is highly recommended to restrict your API key to your specific app identifiers (Bundle ID for iOS, Package Name for Android) and ensure it's authorized to use the "Places API (New)".
 
 ## 📦 Installation
 
@@ -47,12 +30,22 @@ yarn add react-native-place-autocomplete-picker
 
 No additional setup is required for Android. The API key is passed programmatically. Just rebuild the project and run.
 
+### 🔑 Getting Your API Key
+
+This module uses the new Google Places SDK, which requires you to enable the **"Places API (New)"** in your Google Cloud project. You can use an existing API key, but you must ensure this new service is enabled for it.
+
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
+2. Create a new project or select an existing one.
+3. **Enable Billing** for your project and **APIs & Services > Library**.
+4. Search for **"Places API (New)"**.
+    > **Important:** Do not select the legacy "Places API". This module will not work with it.
+5. Click the **Enable** button and go to **APIs & Services > Credentials** to create a new API Key or select an existing one.
+
 ## Usage
 
 Using the picker is straightforward. First, initialize it with your API key as soon as your app starts, then call the open method to present the UI.
 
 ```javascript
-import React, { useEffect, useState } from 'react';
 import { View, Button, Text, StyleSheet, ScrollView, Platform } from 'react-native';
 import * as PlacePicker from 'react-native-place-autocomplete-picker';
 
@@ -166,3 +159,7 @@ Contributions are always welcome! Whether it's bug reports, feature requests, or
 3. Commit your Changes (git commit -m 'feat: Add some AmazingFeature')
 4. Push to the Branch (git push origin feature/AmazingFeature)
 5. Open a Pull Request
+
+### 📜 License
+
+This project is licensed under the MIT License
