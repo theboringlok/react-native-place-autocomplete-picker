@@ -13,7 +13,7 @@ export interface Place {
   latitude: number;
   longitude: number;
   postalCode?: string;
-  addressComponents?: PlaceAddressComponent[]
+  addressComponents?: PlaceAddressComponent[];
 }
 
 export type PickerMode = 'fullscreen' | 'overlay';
@@ -23,4 +23,6 @@ export interface Spec extends TurboModule {
   open(mode?: PickerMode): Promise<Place>;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('PlaceAutocompletePicker');
+export default TurboModuleRegistry.getEnforcing<Spec>(
+  'PlaceAutocompletePicker'
+);
