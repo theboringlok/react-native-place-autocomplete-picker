@@ -47,14 +47,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nerdifydev/react-native-place-autocomplete-picker.git"
+    "url": "git+https://github.com/theboringlok/react-native-place-autocomplete-picker.git"
   },
-  "author": "Lokesh Jangid <nerdifycode@gmail.com> (https://github.com/nerdifydev)",
+  "author": "Lokesh Jangid <nerdifycode@gmail.com> (https://github.com/theboringlok)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nerdifydev/react-native-place-autocomplete-picker/issues"
+    "url": "https://github.com/theboringlok/react-native-place-autocomplete-picker/issues"
   },
-  "homepage": "https://github.com/nerdifydev/react-native-place-autocomplete-picker#readme",
+  "homepage": "https://github.com/theboringlok/react-native-place-autocomplete-picker#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
