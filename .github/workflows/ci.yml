@@ -151,3 +151,43 @@ jobs:
       - name: Build example for iOS
         run: |
           yarn turbo run build:ios --cache-dir="${{ env.TURBO_CACHE_DIR }}"
+
+  release:
+      name: Release
+      runs-on: ubuntu-latest
+      # This job depends on the others, so it will only run if they all succeed
+      needs: [lint, test, build-library, build-android, build-ios]
+      # This condition ensures the job only runs on pushes to release branches, NOT on pull requests
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      
+      # Grant permissions to the GITHUB_TOKEN for semantic-release
+      permissions:
+        contents: write # To push releases and tags
+        issues: write # To comment on issues and PRs
+        pull-requests: write # To comment on issues and PRs
+
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            # This is important to allow semantic-release to push changes back
+            persist-credentials: false
+
+        - name: Setup Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: 'lts/*'
+            cache: 'yarn' # or 'npm' if you use npm
+
+        - name: Install dependencies
+          run: yarn install --frozen-lockfile
+
+        - name: Build the library
+          # Build again in this job to ensure all artifacts are fresh before publishing
+          run: yarn prepare
+
+        - name: Release
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          run: npx semantic-release

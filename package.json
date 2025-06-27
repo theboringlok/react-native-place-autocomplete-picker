@@ -1,7 +1,7 @@
 {
   "name": "react-native-place-autocomplete-picker",
-  "version": "0.1.0",
-  "description": " React Native package for picking places using Google's new Places API on both iOS and Android.",
+  "version": "1.0.0",
+  "description": "A fully native, high-performance and easy to use Google Place Autocomplete picker for React Native. Built with the new architecture (Turbo Modules) and the new Google Places SDK for maximum performance and a seamless native feel on both iOS and Android.",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
@@ -68,6 +68,9 @@
     "@react-native/babel-preset": "0.79.2",
     "@react-native/eslint-config": "^0.78.0",
     "@release-it/conventional-changelog": "^9.0.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.3",
     "@types/jest": "^29.5.5",
     "@types/react": "^19.0.0",
     "commitlint": "^19.6.1",
@@ -81,6 +84,7 @@
     "react-native": "0.79.2",
     "react-native-builder-bob": "^0.40.8",
     "release-it": "^17.10.0",
+    "semantic-release": "^24.2.5",
     "turbo": "^1.10.7",
     "typescript": "^5.8.3"
   },
