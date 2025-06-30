@@ -26,6 +26,16 @@ npm install react-native-place-autocomplete-picker
 yarn add react-native-place-autocomplete-picker
 ```
 
+## iOS Setup
+
+Install pods:
+
+```bash
+npx pod-install
+# --- or ---
+cd ios && pod install
+```
+
 ## Android Setup
 
 No additional setup is required for Android. The API key is passed programmatically. Just rebuild the project and run.
