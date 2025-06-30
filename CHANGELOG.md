@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/theboringlok/react-native-place-autocomplete-picker/compare/v1.0.0...v1.0.1) (2025-06-27)
+
+
+### Bug Fixes
+
+* implement automated releases with semantic-release with public access ([f6b4019](https://github.com/theboringlok/react-native-place-autocomplete-picker/commit/f6b4019e34dcc5728b6c1a9c66302c89d38659ad))
+* implement automated releases with semantic-release with public access ([4fdde2a](https://github.com/theboringlok/react-native-place-autocomplete-picker/commit/4fdde2a2560f2ecf951e3c19f31df29520f16d6e))
+
 # 1.0.0 (2025-06-27)
 
 
