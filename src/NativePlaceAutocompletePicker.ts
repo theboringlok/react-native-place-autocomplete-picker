@@ -20,7 +20,7 @@ export type PickerMode = 'fullscreen' | 'overlay';
 
 export interface Spec extends TurboModule {
   initialize(apiKey: string): void;
-  open(mode?: PickerMode): Promise<Place>;
+  open(mode?: string): Promise<Place>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>(

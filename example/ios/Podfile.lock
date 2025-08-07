@@ -9,7 +9,7 @@ PODS:
   - hermes-engine (0.79.2):
     - hermes-engine/Pre-built (= 0.79.2)
   - hermes-engine/Pre-built (0.79.2)
-  - PlaceAutocompletePicker (0.1.0):
+  - PlaceAutocompletePicker (1.0.1):
     - DoubleConversion
     - glog
     - GooglePlaces
@@ -1917,7 +1917,7 @@ SPEC CHECKSUMS:
   glog: 5683914934d5b6e4240e497e0f4a3b42d1854183
   GooglePlaces: 8afca6c4e946472e91298589d1640d614b51749a
   hermes-engine: 314be5250afa5692b57b4dd1705959e1973a8ebe
-  PlaceAutocompletePicker: 3122e3a94a2aa4c93f139384c76a93ba6acdf8ad
+  PlaceAutocompletePicker: e48fdb0a4da9d85be4d6af01f59c0da8fcae0d6c
   RCT-Folly: e78785aa9ba2ed998ea4151e314036f6c49e6d82
   RCTDeprecation: 83ffb90c23ee5cea353bd32008a7bca100908f8c
   RCTRequired: eb7c0aba998009f47a540bec9e9d69a54f68136e

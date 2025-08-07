@@ -51,6 +51,10 @@ This module uses the new Google Places SDK, which requires you to enable the **"
     > **Important:** Do not select the legacy "Places API". This module will not work with it.
 5. Click the **Enable** button and go to **APIs & Services > Credentials** to create a new API Key or select an existing one.
 
+### 🔑 Restricting Your API Key
+
+You can restrict the API keys for both iOS and Android by adding platform-specific conditions, as demonstrated in the App.tsx file. For security, it's crucial to restrict your key. Go to the Application restrictions section—add the iOS restriction using your app's Bundle ID and the Android restriction using your app's Package Name and SHA-1 fingerprint. In the API restrictions section, ensure that the key has access only to the Places API.
+
 ## Usage
 
 Using the picker is straightforward. First, initialize it with your API key as soon as your app starts, then call the open method to present the UI.
@@ -60,7 +64,8 @@ import { View, Button, Text, StyleSheet, ScrollView, Platform } from 'react-nati
 import * as PlacePicker from 'react-native-place-autocomplete-picker';
 
 // It's recommended to store your API key in a secure way, e.g., environment variables.
-const YOUR_API_KEY = "YOUR_GOOGLE_PLACES_API_KEY";
+const iOS_API_KEY = "YOUR_GOOGLE_PLACES_API_KEY";
+const ANDROID_API_KEY = "YOUR_GOOGLE_PLACES_API_KEY";
 
 export default function App() {
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -68,6 +73,7 @@ export default function App() {
   useEffect(() => {
     // Initialize the module once, e.g., in your root component
     // This connects to the new Places SDK.
+    const YOUR_API_KEY = Platform.os === "android"?ANDROID_API_KEY:iOS_API_KEY
     PlacePicker.initialize(YOUR_API_KEY);
   }, []);
 
@@ -155,10 +161,6 @@ interface AddressComponent {
   types: string[];
 }
 ```
-
-## 🚧 Future Work
-
-Application Key Restrictions: Currently, the library does not fully support Google Cloud's application key restrictions for both platforms when a single key is used. We plan to add support for platform-specific keys in an upcoming release.
 
 ## 🤝 Contributing
 

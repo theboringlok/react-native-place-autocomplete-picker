@@ -15,7 +15,7 @@ export default function App() {
 
   const getPlaces = async () => {
     try {
-      const place = await open();
+      const place = await open('fullscreen');
       console.log('Selected Place:', place);
       setSelectedPlace(place);
     } catch (error) {
