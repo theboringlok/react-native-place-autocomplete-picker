@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/theboringlok/react-native-place-autocomplete-picker/compare/v1.0.1...v1.0.2) (2025-08-07)
+
+
+### Bug Fixes
+
+* ios build failure in older RN version due to union type in native codegen and update readme ([9f1f119](https://github.com/theboringlok/react-native-place-autocomplete-picker/commit/9f1f11907ada5a5e7704be02ca3e94a6e0875f99))
+
 ## [1.0.1](https://github.com/theboringlok/react-native-place-autocomplete-picker/compare/v1.0.0...v1.0.1) (2025-06-27)
 
 
