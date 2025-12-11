@@ -60,6 +60,7 @@ jobs:
         contents: write # To push releases and tags
         issues: write # To comment on issues and PRs
         pull-requests: write # To comment on issues and PRs
+        id-token: write # To enable use of OIDC for npm trusted publishing
 
       steps:
         - name: Checkout
