@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/theboringlok/react-native-place-autocomplete-picker/compare/v1.0.2...v1.1.0) (2025-12-11)
+
+
+### Bug Fixes
+
+* updated ci with npm access ([3969155](https://github.com/theboringlok/react-native-place-autocomplete-picker/commit/3969155086d20ccf52189bb27b037a5343bdaeaa))
+
+
+### Features
+
+* add countries filter and fix a bug related to RN version above 0.80 ([2cf3e75](https://github.com/theboringlok/react-native-place-autocomplete-picker/commit/2cf3e7556a36ee74306b85aa7b850e28fbc9c384))
+
 ## [1.0.2](https://github.com/theboringlok/react-native-place-autocomplete-picker/compare/v1.0.1...v1.0.2) (2025-08-07)
 
 
