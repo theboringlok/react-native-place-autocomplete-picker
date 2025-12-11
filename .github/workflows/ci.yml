@@ -81,12 +81,6 @@ jobs:
           # Build again in this job to ensure all artifacts are fresh before publishing
           run: yarn prepare
 
-        - name: Configure npm for publishing
-          run: |
-            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-          env:
-            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
         - name: Release
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
