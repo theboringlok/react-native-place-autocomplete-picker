@@ -15,7 +15,7 @@ RCT_EXPORT_METHOD(initialize:(NSString *)apiKey)
   });
 }
 
-- (void)open: (NSString *)mode resolve:(nonnull RCTPromiseResolveBlock)resolve reject:(nonnull RCTPromiseRejectBlock)reject {
+- (void)open:(NSDictionary *)options resolve:(nonnull RCTPromiseResolveBlock)resolve reject:(nonnull RCTPromiseRejectBlock)reject {
   
 
   dispatch_async(dispatch_get_main_queue(), ^{
@@ -29,6 +29,14 @@ RCT_EXPORT_METHOD(initialize:(NSString *)apiKey)
     // Specify the place data to return.
     GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldPlaceID | GMSPlaceFieldCoordinate | GMSPlaceFieldFormattedAddress | GMSPlaceFieldAddressComponents | GMSPlaceFieldTypes);
     acController.placeFields = fields;
+    
+    // Extract and apply countries filter from options
+    NSArray<NSString *> *countries = options[@"countries"];
+    if (countries != nil && countries.count > 0) {
+      GMSAutocompleteFilter *filter = [[GMSAutocompleteFilter alloc] init];
+      filter.countries = countries;
+      acController.autocompleteFilter = filter;
+    }
     
     UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
     while (rootViewController.presentedViewController) {

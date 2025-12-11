@@ -12,7 +12,7 @@ A fully native, high-performance and easy to use Google Place Autocomplete picke
 
 - **📍 New Google Places SDK**: Utilizes the latest and most powerful Google Places SDK for accurate and reliable place data.
 - **📱 Fully Native UI**: Presents a 100% native autocomplete interface on both iOS and Android for a smooth user experience.
-- **🔧 Customizable**: Control the presentation mode on Android (fullscreen or overlay).
+- **🔧 Customizable**: Control the presentation mode on Android (fullscreen or overlay) and filter results by country.
 - **🚀 Turbo Module Powered**: Built for the new React Native architecture, ensuring high performance and direct native integration.
 - **📝 Rich Data**: Returns detailed place information, including formatted address, coordinates, and granular `addressComponents` (with long and short names).
 
@@ -77,9 +77,9 @@ export default function App() {
     PlacePicker.initialize(YOUR_API_KEY);
   }, []);
 
-  const handleOpenPicker = async (mode) => {
+  const handleOpenPicker = async (options) => {
     try {
-      const place = await PlacePicker.open(mode);
+      const place = await PlacePicker.open(options);
       console.log(JSON.stringify(place, null, 2));
       setSelectedPlace(place);
     } catch (error) {
@@ -91,11 +91,23 @@ export default function App() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.buttonContainer}>
-        <Button title="Open Picker (Fullscreen)" onPress={() => handleOpenPicker('fullscreen')} />
+        <Button
+          title="Open Picker (Fullscreen)"
+          onPress={() => handleOpenPicker({ mode: 'fullscreen' })}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Open Picker (US Only)"
+          onPress={() => handleOpenPicker({ mode: 'fullscreen', countries: ['US'] })}
+        />
       </View>
       {Platform.OS === 'android' && (
         <View style={styles.buttonContainer}>
-          <Button title="Open Picker (Overlay)" onPress={() => handleOpenPicker('overlay')} />
+          <Button
+            title="Open Picker (Overlay)"
+            onPress={() => handleOpenPicker({ mode: 'overlay' })}
+          />
         </View>
       )}
 
@@ -138,14 +150,26 @@ const styles = StyleSheet.create({
 `initialize(apiKey)`
 Initializes the Google Places SDK with your API key. This must be called once before using the open method. Ensure the API key is associated with a project that has the Places API (New) enabled.
 
-`open(mode?)`
+`open(options?)`
 Opens the native place picker UI. Returns a promise that resolves with the selected place object or rejects if the user cancels or an error occurs.
 
-Returns: `Promise<Place>`
+**Parameters:**
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `mode` | `'fullscreen' \| 'overlay'` | (Optional) Presentation mode for the picker. `'overlay'` is only available on Android. Defaults to `'fullscreen'`. |
+| `countries` | `string[]` | (Optional) An array of ISO 3166-1 Alpha-2 country codes to restrict results (e.g., `['US', 'CA']`). |
+
+**Returns:** `Promise<Place>`
 
 The promise resolves with a Place object with the following structure:
 
 ```typescript
+interface PickerOptions {
+  mode?: 'fullscreen' | 'overlay';
+  countries?: string[];
+}
+
 interface Place {
   name: string;
   address: string;
