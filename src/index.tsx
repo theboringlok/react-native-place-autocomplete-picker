@@ -1,5 +1,6 @@
 import PlaceAutocompletePicker, {
   type PickerMode,
+  type PickerOptions,
   type Place,
   type PlaceAddressComponent,
 } from './NativePlaceAutocompletePicker';
@@ -12,8 +13,8 @@ export function initialize(apiKey: string): void {
   PlaceAutocompletePicker.initialize(apiKey);
 }
 
-export function open(mode?: PickerMode): Promise<Place> {
-  return PlaceAutocompletePicker.open(mode);
+export function open(options?: PickerOptions): Promise<Place> {
+  return PlaceAutocompletePicker.open(options ?? {});
 }
 
-export type { Place, PlaceAddressComponent };
+export type { Place, PlaceAddressComponent, PickerMode, PickerOptions };

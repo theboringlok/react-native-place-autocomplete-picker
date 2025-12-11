@@ -6,6 +6,7 @@ import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.BaseActivityEventListener
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.module.annotations.ReactModule
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
@@ -30,15 +31,17 @@ class PlaceAutocompletePickerModule(reactContext: ReactApplicationContext) :
     }
   }
 
-  override fun open(mode: String?,promise: Promise?) {
+  override fun open(options: ReadableMap?, promise: Promise?) {
     _promise = promise
-    val currentActivity = currentActivity
+    val currentActivity = reactApplicationContext.currentActivity
 
     if (currentActivity == null) {
       promise?.reject("E_ACTIVITY_DOES_NOT_EXIST", "Activity doesn't exist")
       return
     }
 
+    // Extract mode from options
+    val mode = options?.getString("mode")
     val autocompleteMode = if (mode == "overlay") {
       AutocompleteActivityMode.OVERLAY
     } else {
@@ -46,13 +49,26 @@ class PlaceAutocompletePickerModule(reactContext: ReactApplicationContext) :
     }
 
     val fields = listOf(Place.Field.ID, Place.Field.DISPLAY_NAME, Place.Field.LOCATION, Place.Field.FORMATTED_ADDRESS, Place.Field.ADDRESS_COMPONENTS)
-    val intent = Autocomplete.IntentBuilder(autocompleteMode, fields)
-      .build(currentActivity)
+    val intentBuilder = Autocomplete.IntentBuilder(autocompleteMode, fields)
+
+    // Extract and apply countries filter from options
+    val countries = options?.getArray("countries")
+    if (countries != null && countries.size() > 0) {
+      val countryList = mutableListOf<String>()
+      for (i in 0 until countries.size()) {
+        countries.getString(i)?.let { countryList.add(it) }
+      }
+      if (countryList.isNotEmpty()) {
+        intentBuilder.setCountries(countryList)
+      }
+    }
+
+    val intent = intentBuilder.build(currentActivity)
     currentActivity.startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
   }
 
   private val activityEventListener = object : BaseActivityEventListener() {
-    override fun onActivityResult(activity: Activity?, requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) {
       if (requestCode == AUTOCOMPLETE_REQUEST_CODE) {
         _promise?.let { promise ->
           when (resultCode) {

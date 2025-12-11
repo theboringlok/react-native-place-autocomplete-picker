@@ -15,7 +15,10 @@ export default function App() {
 
   const getPlaces = async () => {
     try {
-      const place = await open('fullscreen');
+      const place = await open({
+        mode: 'fullscreen',
+        countries: ['US'],
+      });
       console.log('Selected Place:', place);
       setSelectedPlace(place);
     } catch (error) {

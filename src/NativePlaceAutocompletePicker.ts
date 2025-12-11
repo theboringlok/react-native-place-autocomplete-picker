@@ -18,9 +18,14 @@ export interface Place {
 
 export type PickerMode = 'fullscreen' | 'overlay';
 
+export interface PickerOptions {
+  mode?: PickerMode;
+  countries?: string[];
+}
+
 export interface Spec extends TurboModule {
   initialize(apiKey: string): void;
-  open(mode?: string): Promise<Place>;
+  open(options: Object): Promise<Place>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>(
