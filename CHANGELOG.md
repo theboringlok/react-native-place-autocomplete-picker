@@ -1,3 +1,13 @@
+## [1.1.2](https://github.com/theboringlok/react-native-place-autocomplete-picker/compare/v1.1.1...v1.1.2) (2025-12-23)
+
+
+### Bug Fixes
+
+* issue with ci ([d712039](https://github.com/theboringlok/react-native-place-autocomplete-picker/commit/d7120390342f01d5a7e29145d416058753bf6d58))
+* issue with ci ([4724791](https://github.com/theboringlok/react-native-place-autocomplete-picker/commit/472479118698516764e270a8e205a7e8b4cf48fe))
+* issue with ci ([96f771e](https://github.com/theboringlok/react-native-place-autocomplete-picker/commit/96f771ee1d7acdf3dc90cb0ea1f826c0d2b3beed))
+* workflow secret npm token ([860ff21](https://github.com/theboringlok/react-native-place-autocomplete-picker/commit/860ff21947c94c39d60cb8874c065c80e0907953))
+
 ## [1.1.1](https://github.com/theboringlok/react-native-place-autocomplete-picker/compare/v1.1.0...v1.1.1) (2025-12-11)
 
 
