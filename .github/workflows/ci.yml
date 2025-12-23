@@ -81,9 +81,14 @@ jobs:
         - name: Build the library
           # Build again in this job to ensure all artifacts are fresh before publishing
           run: yarn prepare
+        
+        - name: Debug NPM_TOKEN
+          run: echo "NPM_TOKEN is available"  # Just to confirm the token is accessible
+          env:
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
         - name: Release
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           run: npx semantic-release
